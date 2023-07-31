@@ -41,27 +41,69 @@
                     <navigationItem key="navigationItem" title="다혜님의 책장" id="7rt-JS-Xy3">
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="i6f-Oc-qV3">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="searchButtonDidTap:" destination="lN2-2S-31a" id="st3-Ew-guX"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pUR-hd-c1s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="457.25190839694653" y="220.42253521126761"/>
+            <point key="canvasLocation" x="360" y="220"/>
         </scene>
-        <!--View Controller-->
+        <!--Search View Controller-->
         <scene sceneID="7oi-XY-I8H">
             <objects>
-                <viewController id="2K5-5l-zfx" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchViewController" id="2K5-5l-zfx" customClass="SearchViewController" customModule="BookWorm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lL0-9L-rsk">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="검색화면" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Jj-SU-cBZ">
+                                <rect key="frame" x="144.66666666666666" y="408" width="104" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="dgQ-kG-3u6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0Jj-SU-cBZ" firstAttribute="centerX" secondItem="lL0-9L-rsk" secondAttribute="centerX" id="f00-8e-aA2"/>
+                            <constraint firstItem="0Jj-SU-cBZ" firstAttribute="centerY" secondItem="lL0-9L-rsk" secondAttribute="centerY" id="vAI-H7-NbE"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XMK-1F-Qq5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1263" y="220"/>
+        </scene>
+        <!--Book Detail View Controller-->
+        <scene sceneID="CIx-Jy-e9X">
+            <objects>
+                <viewController storyboardIdentifier="BookDetailViewController" id="mDi-ur-YWD" customClass="BookDetailViewController" customModule="BookWorm" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Hj7-lF-Or0">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="상세화면" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxB-eX-0Aq">
+                                <rect key="frame" x="144.66666666666666" y="408" width="104" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ijb-aA-aJX"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="yxB-eX-0Aq" firstAttribute="centerY" secondItem="Hj7-lF-Or0" secondAttribute="centerY" id="Oar-jV-zeV"/>
+                            <constraint firstItem="yxB-eX-0Aq" firstAttribute="centerX" secondItem="Hj7-lF-Or0" secondAttribute="centerX" id="fqt-4q-qQy"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Iva-Ob-0Fq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1952" y="220"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0q7-GA-yXv">

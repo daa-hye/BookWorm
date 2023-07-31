@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		53D779632A77D85000DEAE1A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D779622A77D85000DEAE1A /* SearchViewController.swift */; };
+		53D779652A77DD7800DEAE1A /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D779642A77DD7800DEAE1A /* BookDetailViewController.swift */; };
 		53D8801C2A77BF4E00B388D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D8801B2A77BF4E00B388D1 /* AppDelegate.swift */; };
 		53D8801E2A77BF4E00B388D1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D8801D2A77BF4E00B388D1 /* SceneDelegate.swift */; };
 		53D880202A77BF4E00B388D1 /* BookListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D8801F2A77BF4E00B388D1 /* BookListCollectionViewController.swift */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		53D779622A77D85000DEAE1A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		53D779642A77DD7800DEAE1A /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		53D880182A77BF4E00B388D1 /* BookWorm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookWorm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53D8801B2A77BF4E00B388D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53D8801D2A77BF4E00B388D1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,7 +73,9 @@
 				53D8801B2A77BF4E00B388D1 /* AppDelegate.swift */,
 				53D8801D2A77BF4E00B388D1 /* SceneDelegate.swift */,
 				53D8801F2A77BF4E00B388D1 /* BookListCollectionViewController.swift */,
+				53D779642A77DD7800DEAE1A /* BookDetailViewController.swift */,
 				53D880212A77BF4E00B388D1 /* Main.storyboard */,
+				53D779622A77D85000DEAE1A /* SearchViewController.swift */,
 				53D880332A77C67F00B388D1 /* MovieInfo.swift */,
 				53D880352A77C6F200B388D1 /* Movie.swift */,
 				53D8802F2A77C27C00B388D1 /* BookListCollectionViewCell.swift */,
@@ -156,8 +162,10 @@
 			files = (
 				53D880202A77BF4E00B388D1 /* BookListCollectionViewController.swift in Sources */,
 				53D880382A77CCD200B388D1 /* Extension+UIView.swift in Sources */,
+				53D779632A77D85000DEAE1A /* SearchViewController.swift in Sources */,
 				53D880342A77C67F00B388D1 /* MovieInfo.swift in Sources */,
 				53D880362A77C6F200B388D1 /* Movie.swift in Sources */,
+				53D779652A77DD7800DEAE1A /* BookDetailViewController.swift in Sources */,
 				53D8801C2A77BF4E00B388D1 /* AppDelegate.swift in Sources */,
 				53D880312A77C27C00B388D1 /* BookListCollectionViewCell.swift in Sources */,
 				53D8801E2A77BF4E00B388D1 /* SceneDelegate.swift in Sources */,

@@ -18,6 +18,17 @@ class BookListCollectionViewController: UICollectionViewController {
         setLayout()
     }
 
+    @IBAction func searchButtonDidTap(_ sender: UIBarButtonItem) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let viewController = storyboard.instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController else {
+            return
+        }
+        let navigator = UINavigationController(rootViewController: viewController)
+        navigator.modalPresentationStyle = .fullScreen
+        present(navigator, animated: true)
+    }
+
+
     func setLayout() {
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 10
@@ -27,6 +38,15 @@ class BookListCollectionViewController: UICollectionViewController {
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
         collectionView.collectionViewLayout = layout
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        guard let viewController = storyBoard.instantiateViewController(identifier: "BookDetailViewController") as? BookDetailViewController else {
+            return
+        }
+        viewController.bookTitle = movieInfo.movieList[indexPath.row].title
+        navigationController?.pushViewController(viewController, animated: true)
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
