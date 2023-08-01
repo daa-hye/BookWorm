@@ -9,5 +9,17 @@ import Foundation
 
 struct Movie {
     let title: String
+    let releaseDate: String
+    let runtime: Int
+    let overview: String
     var rate: Double
+    var like: Bool = false
+
+    init(title: String, releaseDate: String, runtime: Int, overview: String, rate: Double) {
+        self.title = title
+        self.releaseDate = releaseDate
+        self.runtime = runtime
+        self.overview = overview
+        self.rate = rate
+    }
 }

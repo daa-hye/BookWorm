@@ -9,6 +9,7 @@ import UIKit
 
 class BookDetailViewController: UIViewController {
 
+    static let identifier = "BookDetailViewController"
     var bookTitle = ""
 
     override func viewDidLoad() {

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		53D779632A77D85000DEAE1A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D779622A77D85000DEAE1A /* SearchViewController.swift */; };
 		53D779652A77DD7800DEAE1A /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D779642A77DD7800DEAE1A /* BookDetailViewController.swift */; };
+		53D779672A77E5E800DEAE1A /* MovieInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D779662A77E5E800DEAE1A /* MovieInfo.swift */; };
 		53D8801C2A77BF4E00B388D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D8801B2A77BF4E00B388D1 /* AppDelegate.swift */; };
 		53D8801E2A77BF4E00B388D1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D8801D2A77BF4E00B388D1 /* SceneDelegate.swift */; };
 		53D880202A77BF4E00B388D1 /* BookListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D8801F2A77BF4E00B388D1 /* BookListCollectionViewController.swift */; };
@@ -17,7 +18,6 @@
 		53D880282A77BF4E00B388D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53D880262A77BF4E00B388D1 /* LaunchScreen.storyboard */; };
 		53D880312A77C27C00B388D1 /* BookListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D8802F2A77C27C00B388D1 /* BookListCollectionViewCell.swift */; };
 		53D880322A77C27C00B388D1 /* BookListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53D880302A77C27C00B388D1 /* BookListCollectionViewCell.xib */; };
-		53D880342A77C67F00B388D1 /* MovieInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D880332A77C67F00B388D1 /* MovieInfo.swift */; };
 		53D880362A77C6F200B388D1 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D880352A77C6F200B388D1 /* Movie.swift */; };
 		53D880382A77CCD200B388D1 /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D880372A77CCD200B388D1 /* Extension+UIView.swift */; };
 /* End PBXBuildFile section */
@@ -25,6 +25,7 @@
 /* Begin PBXFileReference section */
 		53D779622A77D85000DEAE1A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		53D779642A77DD7800DEAE1A /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
+		53D779662A77E5E800DEAE1A /* MovieInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfo.swift; sourceTree = "<group>"; };
 		53D880182A77BF4E00B388D1 /* BookWorm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookWorm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53D8801B2A77BF4E00B388D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53D8801D2A77BF4E00B388D1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,7 +36,6 @@
 		53D880292A77BF4E00B388D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53D8802F2A77C27C00B388D1 /* BookListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListCollectionViewCell.swift; sourceTree = "<group>"; };
 		53D880302A77C27C00B388D1 /* BookListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookListCollectionViewCell.xib; sourceTree = "<group>"; };
-		53D880332A77C67F00B388D1 /* MovieInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieInfo.swift; path = ../../../../Downloads/MovieInfo.swift; sourceTree = "<group>"; };
 		53D880352A77C6F200B388D1 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		53D880372A77CCD200B388D1 /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,7 +76,7 @@
 				53D779642A77DD7800DEAE1A /* BookDetailViewController.swift */,
 				53D880212A77BF4E00B388D1 /* Main.storyboard */,
 				53D779622A77D85000DEAE1A /* SearchViewController.swift */,
-				53D880332A77C67F00B388D1 /* MovieInfo.swift */,
+				53D779662A77E5E800DEAE1A /* MovieInfo.swift */,
 				53D880352A77C6F200B388D1 /* Movie.swift */,
 				53D8802F2A77C27C00B388D1 /* BookListCollectionViewCell.swift */,
 				53D880302A77C27C00B388D1 /* BookListCollectionViewCell.xib */,
@@ -161,9 +161,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				53D880202A77BF4E00B388D1 /* BookListCollectionViewController.swift in Sources */,
+				53D779672A77E5E800DEAE1A /* MovieInfo.swift in Sources */,
 				53D880382A77CCD200B388D1 /* Extension+UIView.swift in Sources */,
 				53D779632A77D85000DEAE1A /* SearchViewController.swift in Sources */,
-				53D880342A77C67F00B388D1 /* MovieInfo.swift in Sources */,
 				53D880362A77C6F200B388D1 /* Movie.swift in Sources */,
 				53D779652A77DD7800DEAE1A /* BookDetailViewController.swift in Sources */,
 				53D8801C2A77BF4E00B388D1 /* AppDelegate.swift in Sources */,
