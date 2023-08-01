@@ -49,7 +49,7 @@ class BookListCollectionViewController: UICollectionViewController {
         guard let viewController = storyBoard.instantiateViewController(identifier: BookDetailViewController.identifier) as? BookDetailViewController else {
             return
         }
-        viewController.bookTitle = movieInfo.movieList[indexPath.row].title
+        viewController.bookInfo = movieInfo.movieList[indexPath.row]
         navigationController?.pushViewController(viewController, animated: true)
     }
 

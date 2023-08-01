@@ -22,4 +22,11 @@ struct Movie {
         self.overview = overview
         self.rate = rate
     }
+
+    var movieDetailInfo: String {
+        get {
+            "\(releaseDate) \t|\t \(runtime)분 \t|\t \(rate)점"
+        }
+    }
+
 }
