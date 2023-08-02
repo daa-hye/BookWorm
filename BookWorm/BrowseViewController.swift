@@ -56,6 +56,17 @@ class BrowseViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: BookDetailViewController.identifier) as? BookDetailViewController else { return }
+        let navigator = UINavigationController(rootViewController: vc)
+        navigator.modalPresentationStyle = .fullScreen
+        vc.bookInfo = movieInfo.movieList[indexPath.row]
+        present(navigator, animated: true)
+        tableView.reloadRows(at: [indexPath], with: .none)
+    }
+
+
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         movieInfo.movieList.count
     }
