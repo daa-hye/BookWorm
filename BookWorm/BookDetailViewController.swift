@@ -15,10 +15,11 @@ class BookDetailViewController: UIViewController {
     @IBOutlet var overviewLabel: UILabel!
 
     static let identifier = "BookDetailViewController"
-    var bookInfo: Movie = Movie(title: "", releaseDate: "", runtime: 0, overview: "", rate: 0)
+    var bookInfo: Movie?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let bookInfo else { return }
         title = bookInfo.title
         bookCoverImageView.image = UIImage(named: "\(bookInfo.title)")
         titleLabel.text = bookInfo.title

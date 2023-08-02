@@ -18,9 +18,8 @@ class BookListCollectionViewCell: UICollectionViewCell {
     static let identifier = "BookListCollectionViewCell"
 
     func setBookInfo(_ item: Movie) {
-        backdropUIView.setRandomBackgroundColor()
         backdropUIView.setCornerRound()
-
+        backdropUIView.backgroundColor = UIColor(red: item.randomBackgroundColor[0], green: item.randomBackgroundColor[1], blue: item.randomBackgroundColor[2], alpha: 1)
         bookCoverImageView.image = UIImage(named: "\(item.title)")
         titleLabel.text = item.title
         rateLabel.text = "\(item.rate)점"

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		539E9E152A7A390D005521D1 /* BrowseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539E9E132A7A390D005521D1 /* BrowseTableViewCell.swift */; };
+		539E9E162A7A390D005521D1 /* BrowseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 539E9E142A7A390D005521D1 /* BrowseTableViewCell.xib */; };
+		539E9E192A7A3B2B005521D1 /* BrowseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539E9E172A7A3B2B005521D1 /* BrowseCollectionViewCell.swift */; };
+		539E9E1A2A7A3B2B005521D1 /* BrowseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 539E9E182A7A3B2B005521D1 /* BrowseCollectionViewCell.xib */; };
+		539E9E1C2A7A8561005521D1 /* BrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539E9E1B2A7A8561005521D1 /* BrowseViewController.swift */; };
 		53D779632A77D85000DEAE1A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D779622A77D85000DEAE1A /* SearchViewController.swift */; };
 		53D779652A77DD7800DEAE1A /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D779642A77DD7800DEAE1A /* BookDetailViewController.swift */; };
 		53D779672A77E5E800DEAE1A /* MovieInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D779662A77E5E800DEAE1A /* MovieInfo.swift */; };
@@ -23,6 +28,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		539E9E132A7A390D005521D1 /* BrowseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseTableViewCell.swift; sourceTree = "<group>"; };
+		539E9E142A7A390D005521D1 /* BrowseTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrowseTableViewCell.xib; sourceTree = "<group>"; };
+		539E9E172A7A3B2B005521D1 /* BrowseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseCollectionViewCell.swift; sourceTree = "<group>"; };
+		539E9E182A7A3B2B005521D1 /* BrowseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrowseCollectionViewCell.xib; sourceTree = "<group>"; };
+		539E9E1B2A7A8561005521D1 /* BrowseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseViewController.swift; sourceTree = "<group>"; };
 		53D779622A77D85000DEAE1A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		53D779642A77DD7800DEAE1A /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		53D779662A77E5E800DEAE1A /* MovieInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfo.swift; sourceTree = "<group>"; };
@@ -75,10 +85,15 @@
 				53D8801F2A77BF4E00B388D1 /* BookListCollectionViewController.swift */,
 				53D779642A77DD7800DEAE1A /* BookDetailViewController.swift */,
 				53D880212A77BF4E00B388D1 /* Main.storyboard */,
+				539E9E1B2A7A8561005521D1 /* BrowseViewController.swift */,
+				539E9E132A7A390D005521D1 /* BrowseTableViewCell.swift */,
+				539E9E142A7A390D005521D1 /* BrowseTableViewCell.xib */,
 				53D779622A77D85000DEAE1A /* SearchViewController.swift */,
 				53D779662A77E5E800DEAE1A /* MovieInfo.swift */,
 				53D880352A77C6F200B388D1 /* Movie.swift */,
 				53D8802F2A77C27C00B388D1 /* BookListCollectionViewCell.swift */,
+				539E9E172A7A3B2B005521D1 /* BrowseCollectionViewCell.swift */,
+				539E9E182A7A3B2B005521D1 /* BrowseCollectionViewCell.xib */,
 				53D880302A77C27C00B388D1 /* BookListCollectionViewCell.xib */,
 				53D880372A77CCD200B388D1 /* Extension+UIView.swift */,
 				53D880242A77BF4E00B388D1 /* Assets.xcassets */,
@@ -146,7 +161,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				539E9E162A7A390D005521D1 /* BrowseTableViewCell.xib in Resources */,
 				53D880282A77BF4E00B388D1 /* LaunchScreen.storyboard in Resources */,
+				539E9E1A2A7A3B2B005521D1 /* BrowseCollectionViewCell.xib in Resources */,
 				53D880322A77C27C00B388D1 /* BookListCollectionViewCell.xib in Resources */,
 				53D880252A77BF4E00B388D1 /* Assets.xcassets in Resources */,
 				53D880232A77BF4E00B388D1 /* Main.storyboard in Resources */,
@@ -163,8 +180,11 @@
 				53D880202A77BF4E00B388D1 /* BookListCollectionViewController.swift in Sources */,
 				53D779672A77E5E800DEAE1A /* MovieInfo.swift in Sources */,
 				53D880382A77CCD200B388D1 /* Extension+UIView.swift in Sources */,
+				539E9E192A7A3B2B005521D1 /* BrowseCollectionViewCell.swift in Sources */,
 				53D779632A77D85000DEAE1A /* SearchViewController.swift in Sources */,
 				53D880362A77C6F200B388D1 /* Movie.swift in Sources */,
+				539E9E1C2A7A8561005521D1 /* BrowseViewController.swift in Sources */,
+				539E9E152A7A390D005521D1 /* BrowseTableViewCell.swift in Sources */,
 				53D779652A77DD7800DEAE1A /* BookDetailViewController.swift in Sources */,
 				53D8801C2A77BF4E00B388D1 /* AppDelegate.swift in Sources */,
 				53D880312A77C27C00B388D1 /* BookListCollectionViewCell.swift in Sources */,
