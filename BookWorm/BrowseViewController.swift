@@ -25,7 +25,7 @@ class BrowseViewController: UIViewController, UITableViewDelegate, UITableViewDa
         browseTableView.dataSource = self
 
         browseCollectionView.delegate = self
-        browseCollectionView.delegate = self
+        browseCollectionView.dataSource = self
 
         setCollectionViewLayout()
     }
@@ -33,10 +33,8 @@ class BrowseViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func setCollectionViewLayout() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        //layout.itemSize = CGSize(width: 50, height: 65)
+        layout.itemSize = CGSize(width: 100, height: 180)
         layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-        layout.minimumLineSpacing = 16
-        layout.minimumInteritemSpacing = 16
         browseCollectionView.collectionViewLayout = layout
     }
 
@@ -65,8 +63,6 @@ class BrowseViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.reloadRows(at: [indexPath], with: .none)
     }
 
-
-
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         movieInfo.movieList.count
     }
@@ -77,6 +73,14 @@ class BrowseViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         cell.setBookImage(movieInfo.movieList[indexPath.row])
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: BookDetailViewController.identifier) as? BookDetailViewController else { return }
+        let navigator = UINavigationController(rootViewController: vc)
+        navigator.modalPresentationStyle = .fullScreen
+        vc.bookInfo = movieInfo.movieList[indexPath.row]
+        present(navigator, animated: true)
     }
 
 }
