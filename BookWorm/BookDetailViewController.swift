@@ -16,6 +16,7 @@ class BookDetailViewController: UIViewController {
 
     static let identifier = "BookDetailViewController"
     var bookInfo: Movie?
+    var isMain: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +26,10 @@ class BookDetailViewController: UIViewController {
         titleLabel.text = bookInfo.title
         infoLabel.text = "\(bookInfo.releaseDate)  |  \(bookInfo.runtime)분  |  \(bookInfo.rate)점"
         overviewLabel.text = bookInfo.overview
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(closeButtonClicked))
-        navigationItem.leftBarButtonItem?.tintColor = .black
+        if !isMain {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(closeButtonClicked))
+            navigationItem.leftBarButtonItem?.tintColor = .black
+        }
         navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.topItem?.title = ""
     }

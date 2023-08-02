@@ -50,6 +50,7 @@ class BookListCollectionViewController: UICollectionViewController {
             return
         }
         viewController.bookInfo = movieInfo.movieList[indexPath.row]
+        viewController.isMain = true
         navigationController?.pushViewController(viewController, animated: true)
     }
 
