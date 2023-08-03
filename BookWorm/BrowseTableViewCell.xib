@@ -19,7 +19,6 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="foT-gW-Dix">
                         <rect key="frame" x="8" y="8" width="74" height="96"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="96" id="6C6-he-MAH"/>
                             <constraint firstAttribute="width" secondItem="foT-gW-Dix" secondAttribute="height" multiplier="1:1.3" id="stx-63-48d"/>
                         </constraints>
                     </imageView>

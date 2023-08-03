@@ -17,6 +17,7 @@ class BrowseTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        
     }
 
     func setBookInfo(_ item: Movie) {

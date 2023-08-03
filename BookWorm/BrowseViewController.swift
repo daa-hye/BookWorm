@@ -63,6 +63,10 @@ class BrowseViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.reloadRows(at: [indexPath], with: .none)
     }
 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         movieInfo.movieList.count
     }
