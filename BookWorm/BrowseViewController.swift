@@ -7,12 +7,14 @@
 
 import UIKit
 
-class BrowseViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
+class BrowseViewController: UIViewController {
 
     @IBOutlet var browseCollectionView: UICollectionView!
     @IBOutlet var browseTableView: UITableView!
 
     var movieInfo = MovieInfo()
+    let tableType: TransitionType = .tableDetail
+    let collectionType: TransitionType = .collectionDetail
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +40,10 @@ class BrowseViewController: UIViewController, UITableViewDelegate, UITableViewDa
         browseCollectionView.collectionViewLayout = layout
     }
 
+}
+
+extension BrowseViewController: UITableViewDelegate, UITableViewDataSource{
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "요즘 인기 작품"
     }
@@ -55,10 +61,12 @@ class BrowseViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
         guard let vc = storyboard?.instantiateViewController(withIdentifier: BookDetailViewController.identifier) as? BookDetailViewController else { return }
         let navigator = UINavigationController(rootViewController: vc)
         navigator.modalPresentationStyle = .fullScreen
         vc.bookInfo = movieInfo.movieList[indexPath.row]
+        vc.type = tableType
         present(navigator, animated: true)
         tableView.reloadRows(at: [indexPath], with: .none)
     }
@@ -66,6 +74,9 @@ class BrowseViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
+}
+
+extension BrowseViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         movieInfo.movieList.count
@@ -84,7 +95,7 @@ class BrowseViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let navigator = UINavigationController(rootViewController: vc)
         navigator.modalPresentationStyle = .fullScreen
         vc.bookInfo = movieInfo.movieList[indexPath.row]
+        vc.type = collectionType
         present(navigator, animated: true)
     }
-
 }

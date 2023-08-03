@@ -15,6 +15,8 @@ class BookListCollectionViewController: UICollectionViewController {
         }
     }
 
+    var type: TransitionType = .main
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let nib = UINib(nibName: BookListCollectionViewCell.identifier, bundle: nil)
@@ -50,7 +52,7 @@ class BookListCollectionViewController: UICollectionViewController {
             return
         }
         viewController.bookInfo = movieInfo.movieList[indexPath.row]
-        viewController.isMain = true
+        viewController.type = type
         navigationController?.pushViewController(viewController, animated: true)
     }
 

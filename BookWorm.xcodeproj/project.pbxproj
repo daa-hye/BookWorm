@@ -12,6 +12,7 @@
 		539E9E192A7A3B2B005521D1 /* BrowseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539E9E172A7A3B2B005521D1 /* BrowseCollectionViewCell.swift */; };
 		539E9E1A2A7A3B2B005521D1 /* BrowseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 539E9E182A7A3B2B005521D1 /* BrowseCollectionViewCell.xib */; };
 		539E9E1C2A7A8561005521D1 /* BrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539E9E1B2A7A8561005521D1 /* BrowseViewController.swift */; };
+		539E9E202A7BA44E005521D1 /* TransitonTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539E9E1F2A7BA44E005521D1 /* TransitonTypeEnum.swift */; };
 		53D779632A77D85000DEAE1A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D779622A77D85000DEAE1A /* SearchViewController.swift */; };
 		53D779652A77DD7800DEAE1A /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D779642A77DD7800DEAE1A /* BookDetailViewController.swift */; };
 		53D779672A77E5E800DEAE1A /* MovieInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D779662A77E5E800DEAE1A /* MovieInfo.swift */; };
@@ -33,6 +34,7 @@
 		539E9E172A7A3B2B005521D1 /* BrowseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseCollectionViewCell.swift; sourceTree = "<group>"; };
 		539E9E182A7A3B2B005521D1 /* BrowseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrowseCollectionViewCell.xib; sourceTree = "<group>"; };
 		539E9E1B2A7A8561005521D1 /* BrowseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseViewController.swift; sourceTree = "<group>"; };
+		539E9E1F2A7BA44E005521D1 /* TransitonTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitonTypeEnum.swift; sourceTree = "<group>"; };
 		53D779622A77D85000DEAE1A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		53D779642A77DD7800DEAE1A /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		53D779662A77E5E800DEAE1A /* MovieInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfo.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				53D8801D2A77BF4E00B388D1 /* SceneDelegate.swift */,
 				53D8801F2A77BF4E00B388D1 /* BookListCollectionViewController.swift */,
 				53D779642A77DD7800DEAE1A /* BookDetailViewController.swift */,
+				539E9E1F2A7BA44E005521D1 /* TransitonTypeEnum.swift */,
 				53D880212A77BF4E00B388D1 /* Main.storyboard */,
 				539E9E1B2A7A8561005521D1 /* BrowseViewController.swift */,
 				539E9E132A7A390D005521D1 /* BrowseTableViewCell.swift */,
@@ -180,6 +183,7 @@
 				53D880202A77BF4E00B388D1 /* BookListCollectionViewController.swift in Sources */,
 				53D779672A77E5E800DEAE1A /* MovieInfo.swift in Sources */,
 				53D880382A77CCD200B388D1 /* Extension+UIView.swift in Sources */,
+				539E9E202A7BA44E005521D1 /* TransitonTypeEnum.swift in Sources */,
 				539E9E192A7A3B2B005521D1 /* BrowseCollectionViewCell.swift in Sources */,
 				53D779632A77D85000DEAE1A /* SearchViewController.swift in Sources */,
 				53D880362A77C6F200B388D1 /* Movie.swift in Sources */,

@@ -19,7 +19,6 @@ class BrowseCollectionViewCell: UICollectionViewCell {
 
     func setBookImage(_ item: Movie) {
         bookCoverImageView.image = UIImage(named: "\(item.title)")
-        print(1)
     }
 
 }
