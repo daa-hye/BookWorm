@@ -13,8 +13,16 @@ class BrowseViewController: UIViewController {
     @IBOutlet var browseTableView: UITableView!
 
     var movieInfo = MovieInfo()
+    var recentClickedIndex: [Int] = [] {
+        didSet {
+            browseCollectionView.reloadData()
+        }
+    }
+    
     let tableType: TransitionType = .tableDetail
     let collectionType: TransitionType = .collectionDetail
+
+    let recentCount = 5
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +76,9 @@ extension BrowseViewController: UITableViewDelegate, UITableViewDataSource{
         vc.bookInfo = movieInfo.movieList[indexPath.row]
         vc.type = tableType
         present(navigator, animated: true)
+        if !recentClickedIndex.contains(indexPath.row) {
+            recentClickedIndex.insert(indexPath.row, at: 0)
+        }
         tableView.reloadRows(at: [indexPath], with: .none)
     }
 
@@ -79,14 +90,14 @@ extension BrowseViewController: UITableViewDelegate, UITableViewDataSource{
 extension BrowseViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        movieInfo.movieList.count
+        return recentClickedIndex.count < recentCount ? recentClickedIndex.count : recentCount
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BrowseCollectionViewCell.identifier, for: indexPath) as? BrowseCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.setBookImage(movieInfo.movieList[indexPath.row])
+        cell.setBookImage(movieInfo.movieList[recentClickedIndex[indexPath.row]])
         return cell
     }
 
@@ -94,7 +105,7 @@ extension BrowseViewController: UICollectionViewDelegate, UICollectionViewDataSo
         guard let vc = storyboard?.instantiateViewController(withIdentifier: BookDetailViewController.identifier) as? BookDetailViewController else { return }
         let navigator = UINavigationController(rootViewController: vc)
         navigator.modalPresentationStyle = .fullScreen
-        vc.bookInfo = movieInfo.movieList[indexPath.row]
+        vc.bookInfo = movieInfo.movieList[recentClickedIndex[indexPath.row]]
         vc.type = collectionType
         present(navigator, animated: true)
     }

@@ -23,11 +23,7 @@ class BookListCollectionViewCell: UICollectionViewCell {
         bookCoverImageView.image = UIImage(named: "\(item.title)")
         titleLabel.text = item.title
         rateLabel.text = "\(item.rate)점"
-        if item.like {
-            likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        } else {
-            likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
-        }
+        item.like ? likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal) : likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
     }
     
 }
