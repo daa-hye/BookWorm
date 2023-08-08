@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+import Kingfisher
 
 class SearchViewController: UIViewController {
 
@@ -16,6 +19,8 @@ class SearchViewController: UIViewController {
     let searchBar = UISearchBar()
     let movieInfo = MovieInfo()
     var searchedMovie: [Movie] = []
+
+    var searchedBook: [String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,23 +48,40 @@ class SearchViewController: UIViewController {
         dismiss(animated: true)
     }
 
+    func getBookImageFromServer(_ text: String) {
+        let url = "https://dapi.kakao.com/v3/search/book?query=\(text)"
+        //let header: HTTPHeaders = ["Authorization" : "\(APIKey.kakaoAK)"]
+
+        AF.request(url, method: .get).validate().responseJSON { response in
+                    switch response.result {
+                    case .success(let value):
+                        let json = JSON(value)
+                        let totalCount = json["total_count"].intValue
+                        let bookList = json["documents"].arrayValue
+                        for i in 0..<bookList.count {
+                            let bookImage = bookList[i]["thumbnail"].stringValue
+                            self.searchedBook.append(bookImage)
+                        }
+                        print("JSON: \(json)")
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
+    }
+
 }
 
 extension SearchViewController: UISearchBarDelegate {
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text else { return }
-        searchedMovie.removeAll()
-        for item in searchedMovie {
-            if item.title.contains(searchText) {
-                searchedMovie.append(item)
-            }
-        }
+        searchedBook.removeAll()
+        getBookImageFromServer(searchText)
         searchCollectionView.reloadData()
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchedMovie.removeAll()
+        searchedBook.removeAll()
         searchBar.text = ""
         searchBar.endEditing(true)
         searchBar.showsCancelButton = false
@@ -68,13 +90,9 @@ extension SearchViewController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchBar.showsCancelButton = true
-        searchedMovie.removeAll()
+        searchedBook.removeAll()
         guard let searchText = searchBar.text else { return }
-        for item in movieInfo.movieList {
-            if item.title.contains(searchText) {
-                searchedMovie.append(item)
-            }
-        }
+        getBookImageFromServer(searchText)
         searchCollectionView.reloadData()
     }
 }
@@ -82,12 +100,13 @@ extension SearchViewController: UISearchBarDelegate {
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return searchedMovie.count
+        return searchedBook.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BrowseCollectionViewCell.identifier, for: indexPath) as? BrowseCollectionViewCell else { return UICollectionViewCell() }
-        cell.setBookImage(searchedMovie[indexPath.row])
+        guard let bookImageUrl = URL(string: searchedBook[indexPath.row]) else { return UICollectionViewCell() }
+        cell.setBookImage(bookImageUrl)
         return cell
     }
 

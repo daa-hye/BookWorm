@@ -21,4 +21,8 @@ class BrowseCollectionViewCell: UICollectionViewCell {
         bookCoverImageView.image = UIImage(named: "\(item.title)")
     }
 
+    func setBookImage(_ url:URL) {
+        bookCoverImageView.kf.setImage(with: url)
+    }
+
 }
