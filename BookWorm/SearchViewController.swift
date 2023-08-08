@@ -50,19 +50,23 @@ class SearchViewController: UIViewController {
 
     func getBookImageFromServer(_ text: String) {
         let url = "https://dapi.kakao.com/v3/search/book?query=\(text)"
-        //let header: HTTPHeaders = ["Authorization" : "\(APIKey.kakaoAK)"]
+        let header: HTTPHeaders = ["Authorization" : "\(APIKey.kakaoAK)"]
 
-        AF.request(url, method: .get).validate().responseJSON { response in
+        AF.request(url, method: .get, headers: header).validate().responseJSON { response in
                     switch response.result {
                     case .success(let value):
                         let json = JSON(value)
                         let totalCount = json["total_count"].intValue
                         let bookList = json["documents"].arrayValue
+                        self.searchedBook.removeAll()
                         for i in 0..<bookList.count {
                             let bookImage = bookList[i]["thumbnail"].stringValue
                             self.searchedBook.append(bookImage)
                         }
-                        print("JSON: \(json)")
+                        self.searchCollectionView.reloadData()
+                        print(self.searchedBook)
+                        //print("JSON: \(json)")
+
                     case .failure(let error):
                         print(error)
                     }
@@ -74,10 +78,8 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UISearchBarDelegate {
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let searchText = searchBar.text else { return }
-        searchedBook.removeAll()
+        guard let text = searchBar.text , let searchText = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
         getBookImageFromServer(searchText)
-        searchCollectionView.reloadData()
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -85,21 +87,19 @@ extension SearchViewController: UISearchBarDelegate {
         searchBar.text = ""
         searchBar.endEditing(true)
         searchBar.showsCancelButton = false
-        searchCollectionView.reloadData()
     }
 
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchBar.showsCancelButton = true
-        searchedBook.removeAll()
-        guard let searchText = searchBar.text else { return }
-        getBookImageFromServer(searchText)
-        searchCollectionView.reloadData()
-    }
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        searchBar.showsCancelButton = true
+//        guard let text = searchBar.text , let searchText = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
+//        getBookImageFromServer(searchText)
+//    }
 }
 
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(searchedBook.count)
         return searchedBook.count
     }
 
