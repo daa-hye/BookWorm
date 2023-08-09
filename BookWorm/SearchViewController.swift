@@ -16,8 +16,11 @@ class SearchViewController: UIViewController {
     static let identifier = "SearchViewController"
     
     let searchBar = UISearchBar()
+    let maxPage = 50
 
     var searchedBook: [Book] = []
+    var page = 1
+    var isEnd = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +31,7 @@ class SearchViewController: UIViewController {
 
         searchTableView.delegate = self
         searchTableView.dataSource = self
+        searchTableView.prefetchDataSource = self
 
         let nib = UINib(nibName: BrowseTableViewCell.identifier, bundle: nil)
         searchTableView.register(nib, forCellReuseIdentifier: BrowseTableViewCell.identifier)
@@ -46,17 +50,24 @@ class SearchViewController: UIViewController {
         dismiss(animated: true)
     }
 
-    func getBookImageFromServer(_ text: String) {
-        let url = "https://dapi.kakao.com/v3/search/book?query=\(text)"
+    func callRequest(_ text: String, page: Int) {
+
+        guard let searchText = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
+        let url = "https://dapi.kakao.com/v3/search/book?query=\(searchText)&size=10&page=\(page)"
         let header: HTTPHeaders = ["Authorization" : "\(APIKey.kakaoAK)"]
 
         AF.request(url, method: .get, headers: header).validate().responseJSON { response in
                     switch response.result {
                     case .success(let value):
                         let json = JSON(value)
-                        self.searchedBook.removeAll()
+
+                        let statusCode = response.response?.statusCode ?? 500
+                        guard statusCode == 200 else { return }
+
+                        self.isEnd = json["meta"]["is_end"].boolValue
 
                         for item in json["documents"].arrayValue {
+
                             let title = item["title"].stringValue
                             let thumbnail = item["thumbnail"].stringValue
                             let authors = item["authors"].arrayValue.map({$0.stringValue})
@@ -66,7 +77,7 @@ class SearchViewController: UIViewController {
 
                             self.searchedBook.append(data)
                         }
-                        print(self.searchedBook)
+
                         self.searchTableView.reloadData()
 
                     case .failure(let error):
@@ -80,8 +91,10 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UISearchBarDelegate {
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let text = searchBar.text , let searchText = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
-        getBookImageFromServer(searchText)
+
+        searchedBook.removeAll()
+        guard let text = searchBar.text else { return }
+        callRequest(text, page: page)
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -98,7 +111,7 @@ extension SearchViewController: UISearchBarDelegate {
 //    }
 }
 
-extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource, UITableViewDataSourcePrefetching {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchedBook.count
@@ -108,6 +121,19 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: BrowseTableViewCell.identifier) as? BrowseTableViewCell else { return UITableViewCell() }
         cell.setBookInfo(book: searchedBook[indexPath.row])
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            if searchedBook.count - 1 == indexPath.row && page < maxPage && isEnd == false {
+                page += 1
+                callRequest(searchBar.text!, page: page)
+            }
+        }
+    }
+
+    func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
+        print("=====취소 : \(indexPaths)")
     }
 
 }
