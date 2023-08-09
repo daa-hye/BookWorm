@@ -12,15 +12,12 @@ import Kingfisher
 
 class SearchViewController: UIViewController {
 
-    @IBOutlet var searchCollectionView: UICollectionView!
-
+    @IBOutlet var searchTableView: UITableView!
     static let identifier = "SearchViewController"
     
     let searchBar = UISearchBar()
-    let movieInfo = MovieInfo()
-    var searchedMovie: [Movie] = []
 
-    var searchedBook: [String] = []
+    var searchedBook: [Book] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,18 +26,19 @@ class SearchViewController: UIViewController {
         searchBar.placeholder = "검색어를 입력해주세요"
         searchBar.showsCancelButton = false
 
-        searchCollectionView.delegate = self
-        searchCollectionView.dataSource = self
+        searchTableView.delegate = self
+        searchTableView.dataSource = self
 
-        let nib = UINib(nibName: BrowseCollectionViewCell.identifier, bundle: nil)
-        searchCollectionView.register(nib, forCellWithReuseIdentifier: BrowseCollectionViewCell.identifier)
+        let nib = UINib(nibName: BrowseTableViewCell.identifier, bundle: nil)
+        searchTableView.register(nib, forCellReuseIdentifier: BrowseTableViewCell.identifier)
 
         title = "검색화면"
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(closeButtonDidTap))
         navigationItem.leftBarButtonItem?.tintColor = .black
         navigationItem.titleView = searchBar
-        
-        setCollectionViewLayout()
+
+        searchTableView.rowHeight = 140
+
     }
 
     @objc
@@ -56,16 +54,20 @@ class SearchViewController: UIViewController {
                     switch response.result {
                     case .success(let value):
                         let json = JSON(value)
-                        let totalCount = json["total_count"].intValue
-                        let bookList = json["documents"].arrayValue
                         self.searchedBook.removeAll()
-                        for i in 0..<bookList.count {
-                            let bookImage = bookList[i]["thumbnail"].stringValue
-                            self.searchedBook.append(bookImage)
+
+                        for item in json["documents"].arrayValue {
+                            let title = item["title"].stringValue
+                            let thumbnail = item["thumbnail"].stringValue
+                            let authors = item["authors"].arrayValue.map({$0.stringValue})
+                            let authorList = authors.joined(separator: ",")
+
+                            let data = Book(title: title, thumbnail: thumbnail, authors: authorList)
+
+                            self.searchedBook.append(data)
                         }
-                        self.searchCollectionView.reloadData()
                         print(self.searchedBook)
-                        //print("JSON: \(json)")
+                        self.searchTableView.reloadData()
 
                     case .failure(let error):
                         print(error)
@@ -96,26 +98,16 @@ extension SearchViewController: UISearchBarDelegate {
 //    }
 }
 
-extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(searchedBook.count)
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchedBook.count
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BrowseCollectionViewCell.identifier, for: indexPath) as? BrowseCollectionViewCell else { return UICollectionViewCell() }
-        guard let bookImageUrl = URL(string: searchedBook[indexPath.row]) else { return UICollectionViewCell() }
-        cell.setBookImage(bookImageUrl)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: BrowseTableViewCell.identifier) as? BrowseTableViewCell else { return UITableViewCell() }
+        cell.setBookInfo(book: searchedBook[indexPath.row])
         return cell
-    }
-
-    func setCollectionViewLayout() {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 100, height: 180)
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-        searchCollectionView.collectionViewLayout = layout
     }
 
 }

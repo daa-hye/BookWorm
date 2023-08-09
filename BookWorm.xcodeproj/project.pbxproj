@@ -31,6 +31,7 @@
 		53DC9B5C2A824FE7009B3304 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 53DC9B5B2A824FE7009B3304 /* Kingfisher */; };
 		53DC9B5E2A8255DE009B3304 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 53DC9B5D2A8255DD009B3304 /* .gitignore */; };
 		53DC9B602A82563C009B3304 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DC9B5F2A82563C009B3304 /* APIKey.swift */; };
+		53DC9B642A8365B0009B3304 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DC9B632A8365B0009B3304 /* Book.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		53D880372A77CCD200B388D1 /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
 		53DC9B5D2A8255DD009B3304 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		53DC9B5F2A82563C009B3304 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		53DC9B632A8365B0009B3304 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				53DC9B5F2A82563C009B3304 /* APIKey.swift */,
 				53D779662A77E5E800DEAE1A /* MovieInfo.swift */,
 				53D880352A77C6F200B388D1 /* Movie.swift */,
+				53DC9B632A8365B0009B3304 /* Book.swift */,
 				53D8802F2A77C27C00B388D1 /* BookListCollectionViewCell.swift */,
 				539E9E172A7A3B2B005521D1 /* BrowseCollectionViewCell.swift */,
 				539E9E182A7A3B2B005521D1 /* BrowseCollectionViewCell.xib */,
@@ -211,6 +214,7 @@
 				53D779632A77D85000DEAE1A /* SearchViewController.swift in Sources */,
 				53D880362A77C6F200B388D1 /* Movie.swift in Sources */,
 				539E9E1C2A7A8561005521D1 /* BrowseViewController.swift in Sources */,
+				53DC9B642A8365B0009B3304 /* Book.swift in Sources */,
 				53DC9B602A82563C009B3304 /* APIKey.swift in Sources */,
 				539E9E152A7A390D005521D1 /* BrowseTableViewCell.swift in Sources */,
 				53D779652A77DD7800DEAE1A /* BookDetailViewController.swift in Sources */,

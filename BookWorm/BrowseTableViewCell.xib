@@ -22,14 +22,14 @@
                             <constraint firstAttribute="width" secondItem="foT-gW-Dix" secondAttribute="height" multiplier="1:1.3" id="stx-63-48d"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9s-64-dZY">
-                        <rect key="frame" x="98" y="20" width="42" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9s-64-dZY">
+                        <rect key="frame" x="98" y="20" width="206" height="20.333333333333329"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dyK-AG-g49">
-                        <rect key="frame" x="98" y="49" width="37.333333333333343" height="18"/>
+                        <rect key="frame" x="98" y="48.333333333333336" width="206" height="18.000000000000007"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -39,9 +39,11 @@
                     <constraint firstItem="foT-gW-Dix" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="1dY-X9-abb"/>
                     <constraint firstItem="dyK-AG-g49" firstAttribute="top" secondItem="n9s-64-dZY" secondAttribute="bottom" constant="8" id="3Sc-yr-NxZ"/>
                     <constraint firstAttribute="bottom" secondItem="foT-gW-Dix" secondAttribute="bottom" constant="8" id="Cl4-C4-CYF"/>
+                    <constraint firstAttribute="trailing" secondItem="dyK-AG-g49" secondAttribute="trailing" constant="16" id="NRf-ag-yLO"/>
                     <constraint firstItem="n9s-64-dZY" firstAttribute="leading" secondItem="foT-gW-Dix" secondAttribute="trailing" constant="16" id="RfV-VH-GtS"/>
                     <constraint firstItem="dyK-AG-g49" firstAttribute="leading" secondItem="n9s-64-dZY" secondAttribute="leading" id="lAN-Aj-Nln"/>
                     <constraint firstItem="foT-gW-Dix" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="lHb-9d-vfC"/>
+                    <constraint firstAttribute="trailing" secondItem="n9s-64-dZY" secondAttribute="trailing" constant="16" id="vpa-in-4Bt"/>
                     <constraint firstItem="n9s-64-dZY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="ziD-GN-l7C"/>
                 </constraints>
             </tableViewCellContentView>
