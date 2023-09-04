@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class BookListCollectionViewCell: UICollectionViewCell {
 
@@ -17,13 +18,14 @@ class BookListCollectionViewCell: UICollectionViewCell {
 
     static let identifier = "BookListCollectionViewCell"
 
-    func setBookInfo(_ item: Movie) {
+    func setBookInfo(_ item: BookTable) {
         backdropUIView.setCornerRound()
-        backdropUIView.backgroundColor = UIColor(red: item.randomBackgroundColor[0], green: item.randomBackgroundColor[1], blue: item.randomBackgroundColor[2], alpha: 1)
-        bookCoverImageView.image = UIImage(named: "\(item.title)")
+        backdropUIView.backgroundColor = .cyan
+        guard let url = URL(string: item.thumbnail) else { return }
+        bookCoverImageView.kf.setImage(with: url)
         titleLabel.text = item.title
-        rateLabel.text = "\(item.rate)점"
-        item.like ? likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal) : likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        rateLabel.text = item.authors
+        item.liked ? likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal) : likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
     }
     
 }

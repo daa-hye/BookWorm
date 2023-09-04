@@ -6,22 +6,27 @@
 //
 
 import UIKit
+import RealmSwift
 
 class BookListCollectionViewController: UICollectionViewController {
 
-    var movieInfo = MovieInfo() {
-        didSet {
-            collectionView.reloadData()
-        }
-    }
+    var books: Results<BookTable>!
 
     var type: TransitionType = .main
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let realm = try! Realm()
+        books = realm.objects(BookTable.self)
+
         let nib = UINib(nibName: BookListCollectionViewCell.identifier, bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: BookListCollectionViewCell.identifier)
         setLayout()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        collectionView.reloadData()
     }
 
     @IBAction func searchButtonDidTap(_ sender: UIBarButtonItem) {
@@ -46,25 +51,25 @@ class BookListCollectionViewController: UICollectionViewController {
         collectionView.collectionViewLayout = layout
     }
 
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        guard let viewController = storyBoard.instantiateViewController(identifier: BookDetailViewController.identifier) as? BookDetailViewController else {
-            return
-        }
-        viewController.bookInfo = movieInfo.movieList[indexPath.row]
-        viewController.type = type
-        navigationController?.pushViewController(viewController, animated: true)
-    }
+//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+//        guard let viewController = storyBoard.instantiateViewController(identifier: BookDetailViewController.identifier) as? BookDetailViewController else {
+//            return
+//        }
+//        viewController.bookInfo = movieInfo.movieList[indexPath.row]
+//        viewController.type = type
+//        navigationController?.pushViewController(viewController, animated: true)
+//    }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return movieInfo.movieList.count
+        return books.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookListCollectionViewCell.identifier, for: indexPath) as? BookListCollectionViewCell else {
             return UICollectionViewCell()
         }
-        let item = movieInfo.movieList[indexPath.row]
+        let item = books[indexPath.row]
         cell.setBookInfo(item)
         cell.likeButton.tag = indexPath.row
         cell.likeButton.addTarget(self, action: #selector(likeButtonDidTap), for: .touchUpInside)
@@ -74,7 +79,7 @@ class BookListCollectionViewController: UICollectionViewController {
 
     @objc
     func likeButtonDidTap(_ sender: UIButton) {
-        movieInfo.movieList[sender.tag].like.toggle()
+        books[sender.tag].liked.toggle()
     }
 
 }

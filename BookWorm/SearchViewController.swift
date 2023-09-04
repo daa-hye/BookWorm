@@ -9,6 +9,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import Kingfisher
+import RealmSwift
 
 class SearchViewController: UIViewController {
 
@@ -121,6 +122,19 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource, UITa
         guard let cell = tableView.dequeueReusableCell(withIdentifier: BrowseTableViewCell.identifier) as? BrowseTableViewCell else { return UITableViewCell() }
         cell.setBookInfo(book: searchedBook[indexPath.row])
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let realm = try! Realm()
+        let book = searchedBook[indexPath.row]
+
+        let task = BookTable(title: book.title, thumbnail: book.thumbnail, authors: book.authors)
+
+        try! realm.write {
+            realm.add(task)
+        }
+        
+        dismiss(animated: true)
     }
 
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
