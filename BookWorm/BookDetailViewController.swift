@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Kingfisher
+import RealmSwift
 
 class BookDetailViewController: UIViewController {
 
@@ -50,6 +50,20 @@ class BookDetailViewController: UIViewController {
     func closeButtonClicked() {
         dismiss(animated: true)
     }
+
+    @IBAction func deleteButtonDidTap(_ sender: UIBarButtonItem) {
+        guard let bookInfo else { return }
+        removeImageFromDocument(fileName: "cover_\(bookInfo._id).jpg")
+
+        let realm = try! Realm()
+
+        try! realm.write {
+            realm.delete(bookInfo)
+        }
+
+        navigationController?.popViewController(animated: true)
+    }
+
 
 }
 

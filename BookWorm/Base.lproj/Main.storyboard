@@ -185,7 +185,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ws6-Su-di3">
-                                <rect key="frame" x="4" y="585.33333333333337" width="385" height="216.66666666666663"/>
+                                <rect key="frame" x="4" y="585.33333333333337" width="385" height="163.66666666666663"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -197,6 +197,17 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pry-1T-T2a">
+                                <rect key="frame" x="0.0" y="769" width="393" height="49"/>
+                                <items>
+                                    <barButtonItem title="Delete" id="jfl-p0-1HH">
+                                        <connections>
+                                            <action selector="deleteButtonDidTap:" destination="mDi-ur-YWD" id="U3O-i3-qcA"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                            </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ijb-aA-aJX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -207,13 +218,16 @@
                             <constraint firstItem="Ijb-aA-aJX" firstAttribute="trailing" secondItem="0hs-uq-vd9" secondAttribute="trailing" constant="20" id="Abf-ef-R6C"/>
                             <constraint firstItem="b5U-rA-ALu" firstAttribute="height" secondItem="Hj7-lF-Or0" secondAttribute="height" multiplier="0.3" id="DsQ-t7-GWf"/>
                             <constraint firstItem="b5U-rA-ALu" firstAttribute="top" secondItem="Ijb-aA-aJX" secondAttribute="top" constant="16" id="JHh-Iy-cOk"/>
+                            <constraint firstItem="Pry-1T-T2a" firstAttribute="top" secondItem="Ws6-Su-di3" secondAttribute="bottom" constant="20" id="Lok-xp-T2r"/>
+                            <constraint firstItem="Pry-1T-T2a" firstAttribute="trailing" secondItem="Ijb-aA-aJX" secondAttribute="trailing" id="MZa-wh-tRj"/>
                             <constraint firstItem="aoQ-4G-Gf6" firstAttribute="top" secondItem="aKV-xS-Thm" secondAttribute="bottom" constant="4" id="XEU-eD-2qS"/>
                             <constraint firstItem="aoQ-4G-Gf6" firstAttribute="centerX" secondItem="Hj7-lF-Or0" secondAttribute="centerX" id="b3D-fV-arv"/>
+                            <constraint firstItem="Pry-1T-T2a" firstAttribute="bottom" secondItem="Ijb-aA-aJX" secondAttribute="bottom" id="bPO-xj-7Bl"/>
                             <constraint firstItem="0hs-uq-vd9" firstAttribute="top" secondItem="aoQ-4G-Gf6" secondAttribute="bottom" constant="16" id="fLe-hR-EbV"/>
-                            <constraint firstItem="Ijb-aA-aJX" firstAttribute="bottom" secondItem="Ws6-Su-di3" secondAttribute="bottom" constant="16" id="foB-5M-VWK"/>
                             <constraint firstItem="0hs-uq-vd9" firstAttribute="centerX" secondItem="Hj7-lF-Or0" secondAttribute="centerX" id="gn2-IF-uM3"/>
                             <constraint firstItem="aKV-xS-Thm" firstAttribute="top" secondItem="b5U-rA-ALu" secondAttribute="bottom" constant="16" id="jcC-sP-clK"/>
                             <constraint firstItem="Ijb-aA-aJX" firstAttribute="trailing" secondItem="Ws6-Su-di3" secondAttribute="trailing" constant="4" id="qZg-jZ-daL"/>
+                            <constraint firstItem="Pry-1T-T2a" firstAttribute="leading" secondItem="Ijb-aA-aJX" secondAttribute="leading" id="wyH-lF-71u"/>
                             <constraint firstItem="aKV-xS-Thm" firstAttribute="centerX" secondItem="Hj7-lF-Or0" secondAttribute="centerX" id="xb4-yL-Sk1"/>
                             <constraint firstItem="0hs-uq-vd9" firstAttribute="leading" secondItem="Ijb-aA-aJX" secondAttribute="leading" constant="20" id="zqT-Yt-Yaa"/>
                         </constraints>
@@ -297,6 +311,9 @@
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
