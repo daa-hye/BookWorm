@@ -125,6 +125,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource, UITa
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        let cell = tableView.cellForRow(at: indexPath) as! BrowseTableViewCell
         let realm = try! Realm()
         let book = searchedBook[indexPath.row]
 
@@ -132,6 +134,10 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource, UITa
 
         try! realm.write {
             realm.add(task)
+        }
+
+        if let image = cell.bookCoverImageView.image {
+            saveImageToDocument(fileName: "cover_\(task._id).jpg", image: image)
         }
         
         dismiss(animated: true)

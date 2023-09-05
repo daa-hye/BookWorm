@@ -18,6 +18,7 @@ class BookListCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
 
         let realm = try! Realm()
+        print(realm.configuration.fileURL)
         books = realm.objects(BookTable.self)
 
         let nib = UINib(nibName: BookListCollectionViewCell.identifier, bundle: nil)
@@ -51,15 +52,15 @@ class BookListCollectionViewController: UICollectionViewController {
         collectionView.collectionViewLayout = layout
     }
 
-//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-//        guard let viewController = storyBoard.instantiateViewController(identifier: BookDetailViewController.identifier) as? BookDetailViewController else {
-//            return
-//        }
-//        viewController.bookInfo = movieInfo.movieList[indexPath.row]
-//        viewController.type = type
-//        navigationController?.pushViewController(viewController, animated: true)
-//    }
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        guard let viewController = storyBoard.instantiateViewController(identifier: BookDetailViewController.identifier) as? BookDetailViewController else {
+            return
+        }
+        viewController.bookInfo = books[indexPath.row]
+        viewController.type = type
+        navigationController?.pushViewController(viewController, animated: true)
+    }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return books.count
@@ -71,6 +72,8 @@ class BookListCollectionViewController: UICollectionViewController {
         }
         let item = books[indexPath.row]
         cell.setBookInfo(item)
+        let image = loadImageFromDocument(fileName: "cover_\(item._id).jpg")
+        cell.bookCoverImageView.image = image
         cell.likeButton.tag = indexPath.row
         cell.likeButton.addTarget(self, action: #selector(likeButtonDidTap), for: .touchUpInside)
 

@@ -21,8 +21,8 @@ class BookListCollectionViewCell: UICollectionViewCell {
     func setBookInfo(_ item: BookTable) {
         backdropUIView.setCornerRound()
         backdropUIView.backgroundColor = .cyan
-        guard let url = URL(string: item.thumbnail) else { return }
-        bookCoverImageView.kf.setImage(with: url)
+//        guard let url = URL(string: item.thumbnail) else { return }
+//        bookCoverImageView.kf.setImage(with: url)
         titleLabel.text = item.title
         rateLabel.text = item.authors
         item.liked ? likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal) : likeButton.setImage(UIImage(systemName: "heart"), for: .normal)

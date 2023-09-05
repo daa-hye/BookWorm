@@ -68,23 +68,23 @@ extension BrowseViewController: UITableViewDelegate, UITableViewDataSource{
         return cell
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: BookDetailViewController.identifier) as? BookDetailViewController else { return }
-        let navigator = UINavigationController(rootViewController: vc)
-        navigator.modalPresentationStyle = .fullScreen
-        vc.bookInfo = movieInfo.movieList[indexPath.row]
-        vc.type = tableType
-        present(navigator, animated: true)
-        if !recentClickedIndex.contains(indexPath.row) {
-            recentClickedIndex.insert(indexPath.row, at: 0)
-        }
-        tableView.reloadRows(at: [indexPath], with: .none)
-    }
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//
+//        guard let vc = storyboard?.instantiateViewController(withIdentifier: BookDetailViewController.identifier) as? BookDetailViewController else { return }
+//        let navigator = UINavigationController(rootViewController: vc)
+//        navigator.modalPresentationStyle = .fullScreen
+//        vc.bookInfo = movieInfo.movieList[indexPath.row]
+//        vc.type = tableType
+//        present(navigator, animated: true)
+//        if !recentClickedIndex.contains(indexPath.row) {
+//            recentClickedIndex.insert(indexPath.row, at: 0)
+//        }
+//        tableView.reloadRows(at: [indexPath], with: .none)
+//    }
+//
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 100
+//    }
 }
 
 extension BrowseViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -105,8 +105,8 @@ extension BrowseViewController: UICollectionViewDelegate, UICollectionViewDataSo
         guard let vc = storyboard?.instantiateViewController(withIdentifier: BookDetailViewController.identifier) as? BookDetailViewController else { return }
         let navigator = UINavigationController(rootViewController: vc)
         navigator.modalPresentationStyle = .fullScreen
-        vc.bookInfo = movieInfo.movieList[recentClickedIndex[indexPath.row]]
-        vc.type = collectionType
-        present(navigator, animated: true)
+        //vc.bookInfo = movieInfo.movieList[recentClickedIndex[indexPath.row]]
+        //vc.type = collectionType
+        //present(navigator, animated: true)
     }
 }

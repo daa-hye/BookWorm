@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class BookDetailViewController: UIViewController {
 
@@ -18,7 +19,7 @@ class BookDetailViewController: UIViewController {
     static let identifier = "BookDetailViewController"
     let placeholder = "메모를 입력해주세요"
 
-    var bookInfo: Movie?
+    var bookInfo: BookTable?
     var type: TransitionType?
 
     override func viewDidLoad() {
@@ -30,11 +31,11 @@ class BookDetailViewController: UIViewController {
         memoTextView.textColor = .lightGray
 
         guard let bookInfo else { return }
-        title = bookInfo.title
-        bookCoverImageView.image = UIImage(named: "\(bookInfo.title)")
+        let image = loadImageFromDocument(fileName: "cover_\(bookInfo._id).jpg")
+        bookCoverImageView.image = image
         titleLabel.text = bookInfo.title
-        infoLabel.text = "\(bookInfo.releaseDate)  |  \(bookInfo.runtime)분  |  \(bookInfo.rate)점"
-        overviewLabel.text = bookInfo.overview
+        infoLabel.text = bookInfo.authors
+        //overviewLabel.text =
 
         if !(type == .main) {
             navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(closeButtonClicked))
