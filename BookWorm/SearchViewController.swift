@@ -74,7 +74,7 @@ class SearchViewController: UIViewController {
                             let authors = item["authors"].arrayValue.map({$0.stringValue})
                             let authorList = authors.joined(separator: ",")
 
-                            let data = Book(title: title, thumbnail: thumbnail, authors: authorList)
+                            let data = Book(title: title, thumbnail: thumbnail, authors: authorList, memo: nil)
 
                             self.searchedBook.append(data)
                         }
@@ -130,7 +130,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource, UITa
         let realm = try! Realm()
         let book = searchedBook[indexPath.row]
 
-        let task = BookTable(title: book.title, thumbnail: book.thumbnail, authors: book.authors)
+        let task = BookTable(title: book.title, thumbnail: book.thumbnail, authors: book.authors, memo: book.memo ?? "")
 
         try! realm.write {
             realm.add(task)

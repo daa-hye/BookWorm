@@ -12,5 +12,6 @@ struct Book {
     let title: String
     let thumbnail: String
     let authors: String
+    let memo: String?
 
 }
