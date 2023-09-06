@@ -19,6 +19,8 @@ class BookDetailViewController: UIViewController {
     static let identifier = "BookDetailViewController"
     let placeholder = "메모를 입력해주세요"
 
+    let realm = try! Realm()
+
     var bookInfo: BookTable?
     var type: TransitionType?
 
@@ -35,6 +37,7 @@ class BookDetailViewController: UIViewController {
         bookCoverImageView.image = image
         titleLabel.text = bookInfo.title
         infoLabel.text = bookInfo.authors
+        memoTextView.text = bookInfo.memo
         //overviewLabel.text =
 
         if !(type == .main) {
@@ -44,6 +47,9 @@ class BookDetailViewController: UIViewController {
 
         navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.topItem?.title = ""
+
+        let saveButton = UIBarButtonItem(title: "save", style: .done, target: self, action: #selector(saveButtonClicked))
+        navigationItem.rightBarButtonItem = saveButton
     }
 
     @objc
@@ -51,11 +57,22 @@ class BookDetailViewController: UIViewController {
         dismiss(animated: true)
     }
 
+    @objc
+    func saveButtonClicked() {
+        guard let bookInfo else { return }
+        do {
+            try realm.write {
+                realm.create(BookTable.self, value: ["_id": bookInfo._id, "title": bookInfo.title, "authors": bookInfo.authors, "thumbnail": bookInfo.thumbnail, "": bookInfo.liked, "memo": memoTextView.text ?? ""], update: .modified)
+            }
+        } catch {
+            print("")
+        }
+        navigationController?.popViewController(animated: true)
+    }
+
     @IBAction func deleteButtonDidTap(_ sender: UIBarButtonItem) {
         guard let bookInfo else { return }
         removeImageFromDocument(fileName: "cover_\(bookInfo._id).jpg")
-
-        let realm = try! Realm()
 
         try! realm.write {
             realm.delete(bookInfo)
